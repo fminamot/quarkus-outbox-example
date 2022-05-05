@@ -1,0 +1,21 @@
+{
+    "name": "postgres-outbox",
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+      "database.hostname": "localhost",
+      "database.port": "5432",
+      "database.user": "postgres",
+      "database.password": "postgres",
+      "database.dbname": "db1",
+      "database.server.name": "postgres",
+      "table.include.list" : "public.quarkusoutbox",
+      "plugin.name": "pgoutput",
+      "tombstones.on.delete" : "false",
+      "transforms": "outbox",
+      "transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
+       "transforms.outbox.route.topic.replacement": "${routedByValue}.events",
+      "transforms.outbox.table.field.event.timestamp": "timestamp",
+      "transforms.outbox.table.fields.additional.placement": "type:header:eventType",
+      "taskMax": "1"
+    }
+}
