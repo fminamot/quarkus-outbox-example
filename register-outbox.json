@@ -8,7 +8,7 @@
       "database.password": "postgres",
       "database.dbname": "db1",
       "database.server.name": "postgres",
-      "table.include.list" : "public.quarkusoutbox",
+      "table.include.list" : "public.outboxevent",
       "plugin.name": "pgoutput",
       "tombstones.on.delete" : "false",
       "transforms": "outbox",
